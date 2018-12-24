@@ -74,7 +74,7 @@ func (reg *registry) GetAllPlugins(namespace, key string) ([]*PluginMeta, bool) 
 	// Get the namespace
 	ns, ok := reg.namespaces[namespace]
 	if !ok {
-		return nil, false
+		return []*PluginMeta{}, false
 	}
 
 	return ns.GetAll(key)

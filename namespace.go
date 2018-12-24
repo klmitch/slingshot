@@ -53,7 +53,7 @@ func (ns *namespace) GetAll(key string) ([]*PluginMeta, bool) {
 	// Get the plugins for the key
 	plugs, ok := ns.contents[key]
 	if !ok {
-		return nil, false
+		return []*PluginMeta{}, false
 	}
 
 	// Make a point-in-time result

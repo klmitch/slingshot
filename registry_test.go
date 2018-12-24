@@ -99,7 +99,7 @@ func TestGetAllPluginsNoNamespace(t *testing.T) {
 
 	result, ok := reg.GetAllPlugins("name.space", "key")
 
-	a.Nil(result)
+	a.Equal(result, []*PluginMeta{})
 	a.False(ok)
 }
 

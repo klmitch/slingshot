@@ -48,7 +48,7 @@ func TestGetAllEmpty(t *testing.T) {
 
 	result, ok := ns.GetAll("key")
 
-	a.Nil(result)
+	a.Equal(result, []*PluginMeta{})
 	a.False(ok)
 }
 
