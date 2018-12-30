@@ -8,5 +8,5 @@ install:
 env:
   GO111MODULE: "on"
 script:
-- make
+- make CI_TEST=true
 - $GOPATH/bin/goveralls -coverprofile=cover.out -service=travis-ci
