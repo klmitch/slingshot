@@ -2,6 +2,8 @@
 Slingshot Plugin Manager
 ========================
 
+.. image:: https://travis-ci.org/klmitch/slingshot.svg?branch=master
+    :target: https://travis-ci.org/klmitch/slingshot
 .. image:: https://godoc.org/github.com/klmitch/slingshot?status.svg
     :target: http://godoc.org/github.com/klmitch/slingshot
 
