@@ -3,6 +3,7 @@ Slingshot Plugin Manager
 ========================
 
 .. image:: https://img.shields.io/github/tag/klmitch/slingshot.svg
+    :target: https://github.com/klmitch/slingshot/tags
 .. image:: https://img.shields.io/hexpm/l/plug.svg
     :target: https://github.com/klmitch/slingshot/blob/master/LICENSE
 .. image:: https://travis-ci.org/klmitch/slingshot.svg?branch=master
