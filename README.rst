@@ -16,6 +16,8 @@ Slingshot Plugin Manager
     :target: https://github.com/klmitch/slingshot/issues
 .. image:: https://img.shields.io/github/issues-pr/klmitch/slingshot.svg
     :target: https://github.com/klmitch/slingshot/pulls
+.. image:: https://goreportcard.com/badge/github.com/klmitch/slingshot
+    :target: https://goreportcard.com/report/github.com/klmitch/slingshot
 
 Package slingshot contains a plugin manager built on top of the
 standard plugin package.  Plugins are loaded using the Load function,
