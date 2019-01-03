@@ -47,7 +47,7 @@ func TestGetNonempty(t *testing.T) {
 	a := assert.New(t)
 	plug1 := &PluginMeta{}
 	ns := &namespace{contents: map[string][]*PluginMeta{
-		"key": []*PluginMeta{plug1},
+		"key": {plug1},
 	}}
 
 	result, ok := ns.Get("key")
@@ -69,8 +69,8 @@ func TestGetAllEmpty(t *testing.T) {
 func TestGetAllNonempty(t *testing.T) {
 	a := assert.New(t)
 	plugs := []*PluginMeta{
-		&PluginMeta{Name: "plug1"},
-		&PluginMeta{Name: "plug2"},
+		{Name: "plug1"},
+		{Name: "plug2"},
 	}
 	ns := &namespace{contents: map[string][]*PluginMeta{
 		"key": plugs,
@@ -90,18 +90,18 @@ func TestAddEmpty(t *testing.T) {
 	ns.Add("key", plug1)
 
 	a.Equal(ns.contents, map[string][]*PluginMeta{
-		"key": []*PluginMeta{plug1},
+		"key": {plug1},
 	})
 }
 
 func TestAddNonempty(t *testing.T) {
 	a := assert.New(t)
 	plugs := []*PluginMeta{
-		&PluginMeta{Name: "plug1"},
-		&PluginMeta{Name: "plug2"},
+		{Name: "plug1"},
+		{Name: "plug2"},
 	}
 	ns := &namespace{contents: map[string][]*PluginMeta{
-		"key": []*PluginMeta{plugs[0]},
+		"key": {plugs[0]},
 	}}
 
 	ns.Add("key", plugs[1])

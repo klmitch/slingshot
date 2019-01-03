@@ -8,7 +8,7 @@ all: test
 format:
 ifeq ($(CI_TEST),true)
 	@imports=`$(GOIMPORTS) -l *.go`; \
-	fmts=`$(GOFMT) -l *.go`; \
+	fmts=`$(GOFMT) -l -s *.go`; \
 	all=`(echo $$imports; echo $$fmts) | sort -u`; \
 	if [ "$$all" != "" ]; then \
 		echo "Following files need updates:"; \
@@ -18,13 +18,16 @@ ifeq ($(CI_TEST),true)
 	fi
 else
 	$(GOIMPORTS) -l -w *.go
-	$(GOFMT) -l -w *.go
+	$(GOFMT) -l -s -w *.go
 endif
 
 lint:
 	$(GOLINT) -set_exit_status *.go
 
-test: format lint
+vet:
+	$(GO) vet
+
+test: format lint vet
 	$(GO) test -coverprofile=cover.out
 
 cover: test

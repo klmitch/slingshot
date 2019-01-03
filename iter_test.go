@@ -27,8 +27,8 @@ func TestPluginIterImplementsPluginIter(t *testing.T) {
 func TestIterPlugins(t *testing.T) {
 	a := assert.New(t)
 	plugins := []*PluginMeta{
-		&PluginMeta{Name: "plug1"},
-		&PluginMeta{Name: "plug2"},
+		{Name: "plug1"},
+		{Name: "plug2"},
 	}
 
 	result := IterPlugins(plugins)
@@ -42,8 +42,8 @@ func TestNextBegin(t *testing.T) {
 	a := assert.New(t)
 	iter := &pluginIter{
 		plugins: []*PluginMeta{
-			&PluginMeta{Name: "plug1"},
-			&PluginMeta{Name: "plug2"},
+			{Name: "plug1"},
+			{Name: "plug2"},
 		},
 		idx: 0,
 	}
@@ -58,8 +58,8 @@ func TestNextLast(t *testing.T) {
 	a := assert.New(t)
 	iter := &pluginIter{
 		plugins: []*PluginMeta{
-			&PluginMeta{Name: "plug1"},
-			&PluginMeta{Name: "plug2"},
+			{Name: "plug1"},
+			{Name: "plug2"},
 		},
 		idx: 1,
 	}
@@ -74,8 +74,8 @@ func TestNextEnd(t *testing.T) {
 	a := assert.New(t)
 	iter := &pluginIter{
 		plugins: []*PluginMeta{
-			&PluginMeta{Name: "plug1"},
-			&PluginMeta{Name: "plug2"},
+			{Name: "plug1"},
+			{Name: "plug2"},
 		},
 		idx: 2,
 	}

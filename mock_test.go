@@ -99,8 +99,8 @@ func TestMockRegistryGetAllPluginsNonNil(t *testing.T) {
 	a := assert.New(t)
 	reg := &MockRegistry{}
 	plugs := []*PluginMeta{
-		&PluginMeta{},
-		&PluginMeta{},
+		{},
+		{},
 	}
 	reg.On("GetAllPlugins", "name.space", "key").Return(plugs, true)
 
@@ -207,8 +207,8 @@ func TestMockNamespaceGetAllNonNil(t *testing.T) {
 	a := assert.New(t)
 	ns := &MockNamespace{}
 	plugs := []*PluginMeta{
-		&PluginMeta{},
-		&PluginMeta{},
+		{},
+		{},
 	}
 	ns.On("GetAll", "key").Return(plugs, true)
 

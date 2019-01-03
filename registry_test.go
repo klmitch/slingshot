@@ -121,8 +121,8 @@ func TestGetAllPluginsWithNamespace(t *testing.T) {
 	a := assert.New(t)
 	ns := &MockNamespace{}
 	expected := []*PluginMeta{
-		&PluginMeta{Name: "plug1"},
-		&PluginMeta{Name: "plug2"},
+		{Name: "plug1"},
+		{Name: "plug2"},
 	}
 	reg := &registry{
 		namespaces: map[string]Namespace{
@@ -392,8 +392,6 @@ func TestLoadInitFnPanics(t *testing.T) {
 		a.Nil(params)
 
 		panic("panic my initializer")
-
-		return nil
 	}
 	plug.On("Lookup", SlingshotInit).Return(initFn, nil)
 
