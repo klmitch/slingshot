@@ -152,6 +152,16 @@ func TestRegister(t *testing.T) {
 	ns.AssertExpectations(t)
 }
 
+func TestOpenHook(t *testing.T) {
+	a := assert.New(t)
+	path := "./testdata/no-such"
+
+	iface, err := openHook(path)
+
+	a.Nil(iface)
+	a.NotNil(err)
+}
+
 func setLoadHooks(newAbsHook absHookType, newBaseHook baseHookType, newOpenHook openHookType) (absHookType, baseHookType, openHookType) {
 	// Get the originals
 	origAbsHook := absHook
