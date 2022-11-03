@@ -21,6 +21,12 @@ import (
 	"sync"
 )
 
+// Errors that may be returned
+var (
+	ErrIncompatInit = errors.New("Incompatible plugin initializer")
+	ErrInitPanic    = errors.New("Plugin initializer paniced")
+)
+
 // Registry describes the Slingshot registry.
 type Registry interface {
 	Get(namespace string, create bool) (Namespace, bool)
@@ -115,8 +121,11 @@ type pluginInterface interface {
 
 // Types for the hooks
 type absHookType func(string) (string, error)
-type baseHookType func(string) string
-type openHookType func(string) (pluginInterface, error)
+
+type (
+	baseHookType func(string) string
+	openHookType func(string) (pluginInterface, error)
+)
 
 // These internal variables allow mocking out the system-dependent
 // functions filepath.Abs, filepath.Base, and plugin.Open within the
@@ -152,13 +161,13 @@ func (reg *registry) Load(path string, params map[string]interface{}) (err error
 	}
 	initFn, ok := initSym.(func(Slingshot, map[string]interface{}) error)
 	if !ok {
-		return errors.New("Incompatible plugin initializer")
+		return ErrIncompatInit
 	}
 
 	// OK, construct the slingshot and call the initializer
 	defer func() {
 		if r := recover(); r != nil {
-			err = errors.New("Plugin initializer paniced")
+			err = ErrInitPanic
 		}
 	}()
 	return initFn(&slingshot{

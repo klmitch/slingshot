@@ -197,11 +197,13 @@ func TestLoadAbsFails(t *testing.T) {
 		func(path string) (string, error) {
 			a.Equal(path, "orig/path")
 
+			//nolint:goerr113
 			return "", errors.New("Abs failed")
 		},
 		func(path string) string {
 			a.Equal(path, "/full/path.so")
 
+			//nolint:goconst
 			return "path.so"
 		},
 		func(path string) (pluginInterface, error) {
@@ -228,6 +230,7 @@ func TestLoadOpenFails(t *testing.T) {
 		func(path string) (string, error) {
 			a.Equal(path, "orig/path")
 
+			//nolint:goconst
 			return "/full/path.so", nil
 		},
 		func(path string) string {
@@ -238,6 +241,7 @@ func TestLoadOpenFails(t *testing.T) {
 		func(path string) (pluginInterface, error) {
 			a.Equal(path, "/full/path.so")
 
+			//nolint:goerr113
 			return nil, errors.New("Open failed")
 		},
 	)
@@ -274,6 +278,7 @@ func TestLoadLookupFails(t *testing.T) {
 		},
 	)
 	defer setLoadHooks(origAbsHook, origBaseHook, origOpenHook)
+	//nolint:goerr113
 	plug.On("Lookup", SlingshotInit).Return(nil, errors.New("Lookup failed"))
 	reg := &registry{
 		namespaces: map[string]Namespace{
@@ -356,6 +361,7 @@ func TestLoadInitFnFails(t *testing.T) {
 		})
 		a.Nil(params)
 
+		//nolint:goerr113
 		return errors.New("InitFn fails")
 	}
 	plug.On("Lookup", SlingshotInit).Return(initFn, nil)

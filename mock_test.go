@@ -146,7 +146,7 @@ func TestMockRegistryLoad(t *testing.T) {
 	reg.On("Load", "some/path.so", map[string]interface{}{
 		"a": "value",
 		"b": 3,
-	}).Return(errors.New("an error"))
+	}).Return(errors.New("an error")) //nolint:goerr113
 
 	err := reg.Load("some/path.so", map[string]interface{}{
 		"a": "value",
