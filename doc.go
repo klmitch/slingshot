@@ -55,14 +55,14 @@
 // list of plugins in an object with a Next method returning the next
 // plugin.  With this, an extension function could be written like so:
 //
-//     func Extension(nextPlug *PluginIter, finalFunc func() error) {
-//         next := nextPlug.Next()
-//         if next == nil {
-//             return finalFunc()
-//         }
+//	func Extension(nextPlug *PluginIter, finalFunc func() error) {
+//	    next := nextPlug.Next()
+//	    if next == nil {
+//	        return finalFunc()
+//	    }
 //
-//         return callExtension(next, nextPlug, finalFunc)
-//     }
+//	    return callExtension(next, nextPlug, finalFunc)
+//	}
 //
 // In this example, callExtension is assumed to be a function that
 // calls the plugin function; more on that below.
@@ -93,9 +93,9 @@
 // function to an object implementing an interface.  The callExtension
 // function described above could thus be something of the form:
 //
-//     func callExtension(plug *PluginMeta, nextPlug *PluginIter, finalFunc func() error) {
-//         plug.Plugin.(func(*PluginIter, func() error) error)(nextPlug, finalFunc)
-//     }
+//	func callExtension(plug *PluginMeta, nextPlug *PluginIter, finalFunc func() error) {
+//	    plug.Plugin.(func(*PluginIter, func() error) error)(nextPlug, finalFunc)
+//	}
 //
 // Finally, the slingshot package contains full-featured mocks, built
 // on the "github.com/stretchr/testify/mock" mocking package.  The
@@ -103,7 +103,7 @@
 // This mock can be installed for the use of functions such as
 // GetPlugin by using SetRegistry from a test function like so:
 //
-//     defer SetRegistry(SetRegistry(mockReg))
+//	defer SetRegistry(SetRegistry(mockReg))
 //
 // The MockSlingshot type can be passed to a plugin initialization
 // function.  Finally, there is a MockNamespace type, which has a Name
